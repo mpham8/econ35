@@ -109,8 +109,8 @@ display "Section 1.2"
 
 display "Problem 1"
 use "/Users/michael/Documents/econ35/LSMS-Dar/s1_hhroster_share.dta"
-// tab id DO!!!
-display "15 unique observations of id, there's 8143 observations total. There is a discrepancy between these two data points."
+codebook id
+display "2,091 unique observations of id, there's 8143 observations total. There is a discrepancy between these two data points. This is because multiple people in the same household share the same ID."
 
 
 
@@ -141,5 +141,16 @@ display "Problem 14"
 
 
 display "Problem 15"
+regress d_hwrkyn dist_toCBD, vce(robust)
+regress d_hwrkyn dist_toCBD
+display "For both, OLS gives: d_hwrkyn = -0.0015379(dist_toCBD) + 0.9068416" 
 
 
+
+display "Problem 16"
+display "The coefficients are the same for both robust regression and non-robust regression. The standard error for the coefficient for the robust model is .0009366 and the robust 95% CI is  (-.0033747, .000299). Meanwhile the SE for the non robust model's coefficient is slightly smaller at .000862 with a 95% CI of  (-.0032285, .0001528). Robust sd/se allows the variances to vary and as such they overal se is larger. A larger SE results in a wider confidence interval relative to the non robust sd/se."
+
+
+
+display "Problem 17"
+regress s1_age dist_toCBD
